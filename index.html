@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>web app</title>
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    </head>
+    <body>
+        <header class="app-header">
+            <h1>🌐 My Web App</h1>
+        </header>
+        <!--Age verification-->
+        <div class="central-wrapper">
+            <div class="age-verification">
+                <h2>
+                    🔞AGE VERIFICATION
+                </h2>
+                <p>Enter Your Age</p>
+                <input type="text" id="ageinput" placeholder="Enter your age" required>
+                <button onclick="ageverification()">Submit</button>
+            </div>
+        </div>
+
+        <!--Dob selection-->
+        <div id="dob-selection" style="display: none;">
+            <p style="font-size: 18px; font-weight: 600;">
+                🎂 Select Your Date of Birth
+            </p>
+            <div>
+                <label for="dobCalendar">Choose Date:</label><br>
+                <input type="date" id="dobCalendar" max="" required>
+            </div>
+            <div style="margin-top: 15px;">
+                <button onclick="calculateAgeFromCalendar()" id="submit">Submit</button>
+                <div id="age-result" class="age-box" style="padding-top: 10px;"></div>
+            </div>
+        </div>
+
+
+        <!--ip display-->
+        <div id="ip-info" style="display: none;">
+            <h3>🌐 IP & Country Info:</h3>
+            <p><strong>IP:</strong> <span id="ip"></span></p>
+            <p><strong>Country:</strong> <span id="country-name"></span></p>
+        </div>
+
+        <!--Country display-->
+        <div id="country-selection" style="display: none;">
+            <h2>🌍 Select a Country:</h2>
+            <select id="country-select">
+                <option value="">--Choose a country--</option>
+            </select>
+
+            <div id="flag-container">
+            <img id="flag" src="" alt="Country flag" style="display: none;">
+            </div>
+
+            <div id="country-info" style="display: none;">
+                <p><strong>Capital:</strong> <span id="capital"></span></p>
+                <p><strong>Population:</strong> <span id="population"></span></p>
+            </div>
+
+        </div>   
+
+        <!--toggle button-->
+        <button onclick="toggleFunction()" id="toggle">🌙Dark Mode</button>
+        <script>
+            function toggleFunction(){
+                var element = document.body;
+                element.classList.toggle("dark-mode");
+                var button = document.getElementById("toggle");
+                if (element.classList.contains("dark-mode")) {
+                    button.innerHTML = "☀️Light Mode";
+                } else {
+                    button.innerHTML = "🌙Dark Mode";
+                }
+            }
+        </script>
+
+        <!--reset data button-->
+        <button onclick="resetAllData()" id="reset-button" style="display: none;">🔄 Reset All</button>
+        <script>
+            function resetAllData() {
+                const confirmReset = confirm("Are you sure you want to clear all data?");
+                if (confirmReset) {
+                    localStorage.clear();
+                    location.reload();
+                }
+            }
+
+        </script>
+
+        <!--alert modal-->
+        <div id="custom-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal()">&times;</span>
+                <p id="modal-message">This is a custom alert message</p>
+                <button onclick="closeModal()">OK</button>
+            </div>
+        </div>
+
+    <script src="country.js"></script>
+    <script src="ip.js"></script>
+    <script src="ageverification.js"></script>
+    <script src="dobdropdown.js"></script>
+        
+</body>    
+</html>
