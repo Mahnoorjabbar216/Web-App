@@ -8,11 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   dobInput.max = formattedMax;
 
-  // Optional: set a minimum date (e.g., 100 years ago)
-  const minDate = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate());
-  const formattedMin = minDate.toISOString().split("T")[0];
-  dobInput.min = formattedMin;
-
   // Load saved date if available
   const saved = localStorage.getItem("dobCalendar");
   if (saved) dobInput.value = saved;
